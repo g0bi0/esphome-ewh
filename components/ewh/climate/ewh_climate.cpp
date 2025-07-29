@@ -62,7 +62,7 @@ ewh_mode_t::Mode EWHClimate::to_wh_mode_(ClimateMode mode, const std::string &pr
     return ewh_mode_t::MODE_700W;
   }
   if (mode == ClimateMode::CLIMATE_MODE_HEAT) {
-    return ewh_mode_t::MODE_700W;
+    return ewh_mode_t::MODE_2000W;
   }
   return ewh_mode_t::MODE_OFF;
 }
