@@ -12,7 +12,7 @@ static const std::string PRESET_MODE2 = "1.3 kW";
 static const std::string PRESET_MODE3 = "2.0 kW";
 static const std::string PRESET_NO_FROST = "No Frost";
 static const std::string PRESET_TIMER = "Timer";
-static const std::string &PRESET_DEFAULT = PRESET_MODE3;
+static const std::string &PRESET_DEFAULT = PRESET_MODE2;
 
 void EWHClimate::dump_config() {
   LOG_CLIMATE("", "Electrolux Water Heater", this);
