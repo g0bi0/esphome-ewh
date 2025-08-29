@@ -41,7 +41,7 @@ logger:
 
 external_components:
   - source: github://dentra/esphome-components@2023.2.0
-    components: [etl, otax, vport]
+    components: [vport]
     #components: [crash_info, etl, otax, vport, esp32_usb_dis]
     refresh: 1d
   - source: $project_source
