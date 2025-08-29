@@ -12,8 +12,7 @@ static const std::string PRESET_MODE2 = "1.3 kW";
 static const std::string PRESET_MODE3 = "2.0 kW";
 static const std::string PRESET_NO_FROST = "No Frost";
 static const std::string PRESET_TIMER = "Timer";
-static const std::string &PRESET_DEFAULT = PRESET_MODE2;
-static bool first_boot = true;
+static const std::string &PRESET_DEFAULT = PRESET_MODE3;
 
 void EWHClimate::dump_config() {
   LOG_CLIMATE("", "Electrolux Water Heater", this);
@@ -71,15 +70,6 @@ ewh_mode_t::Mode EWHClimate::to_wh_mode_(ClimateMode mode, const std::string &pr
 void EWHClimate::control(const ClimateCall &call) {
   const auto mode = call.get_mode().value_or(this->mode);
   const auto preset = call.get_custom_preset().value_or(*this->custom_preset);
-  if (first_boot) {
-    ESP_LOGI(TAG, "Applying default preset: %s", PRESET_DEFAULT.c_str());
-    preset = PRESET_DEFAULT;
-    this->mode = climate::CLIMATE_MODE_HEAT;
-    this->custom_preset = PRESET_DEFAULT;
-    this->api_->set_mode(ewh_mode_t::MODE_1300W, status.target_temperature);
-    first_boot = false;
-    has_changes = true;
-  }
   const auto wh_mode = this->to_wh_mode_(mode, preset);
   const auto temp = call.get_target_temperature().value_or(this->target_temperature);
   if (std::isnan(temp)) {
