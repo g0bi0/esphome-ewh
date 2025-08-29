@@ -18,7 +18,7 @@ esphome:
   name: $node_name
   friendly_name: $friendly_name
   name_add_mac_suffix: $node_add_mac_suffix
-  comment: https://t.me/dentra_blog
+  #comment: https://t.me/dentra_blog
   project:
     name: "dentra.ewh-$framework_type-$board"
     version: "$project_version"
