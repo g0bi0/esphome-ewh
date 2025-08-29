@@ -25,7 +25,8 @@ esphome:
   min_version: "2024.12.4" # can't use substitutions here
 
 preferences:
-  flash_write_interval: 1min
+  flash_write_interval: 5min
+  #flash_write_interval: 10min
 
 wifi:
   ap:
@@ -40,7 +41,8 @@ logger:
 
 external_components:
   - source: github://dentra/esphome-components@2023.2.0
-    components: [crash_info, etl, otax, vport, esp32_usb_dis]
+    components: [crash_info, etl, otax, vport]
+    #components: [crash_info, etl, otax, vport, esp32_usb_dis]
     refresh: 1d
   - source: $project_source
     refresh: $project_source_refresh
